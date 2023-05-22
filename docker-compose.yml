@@ -8,7 +8,7 @@ services:
     image: luthfi247/item-app:v1
     #menggunakan port 80 untuk web server nanti
     ports:
-      - 80:80
+      - 80:8080
     #memastikan container item app hanya berjalan apabila container item db diluncurkan
     depends_on:
       - item-db
