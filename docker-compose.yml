@@ -1,0 +1,28 @@
+#untuk menetukan versi docker compose
+version: "3.7"
+#container apa saja yang akan dibuat
+services:
+  #ada container bernama item-app di bagian frontend
+  item-app:
+    #menggunakan base image dari yang sudah dibuat sebelum nya
+    image: luthfi247/item-app:v1
+    #menggunakan port 80 untuk web server nanti
+    ports:
+      - 80:80
+    #memastikan container item app hanya berjalan apabila container item db diluncurkan
+    depends_on:
+      - item-db
+    #melakukan restart otomatis ketika container mati
+    restart: always
+  #container item-db
+  item-db:
+    #menggunakan base image dari mongodb
+    image: mongo:3
+    #attach volume ke direktori /data/db di dalam container
+    volumes:
+      - app-db:/data/db
+    #melakukan restart otomatis ketika container mati
+    restart: always
+#membuat sebuah volume bernama app-db
+volumes:
+  app-db:
