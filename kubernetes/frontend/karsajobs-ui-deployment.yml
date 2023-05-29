@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karsajobs-ui
+spec:
+  selector:
+    matchLabels:
+      app: karsajobs-ui
+  template:
+    metadata:
+      labels:
+        app: karsajobs-ui
+    spec:
+      containers:
+      - name: karsajobs-ui
+        image: luthfi247/karsajobs_ui:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+        env:
+          - name: BACKEND_URL
+            value: http://deployment.apps/karsajobs:8080  
