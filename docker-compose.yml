@@ -12,7 +12,7 @@ services:
     networks:
       - rabbitmq_network
   order-services:
-    image: luthfi247/order-service:latest
+    image: luthfi247/order-service:v1
     #volumes:
     # - .:/src
     depends_on:
